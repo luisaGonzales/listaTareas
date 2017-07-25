@@ -9,7 +9,6 @@ function Tarea (title, completed ){
   }
   this.toHTML = function(){
     var tarea = "";
-    tarea += "- ";
     tarea += this.title;
     return tarea;
   }
@@ -19,6 +18,8 @@ function ListaCompleta () {
   this.tareas = [];
   this.agregar = function (tarea){
     this.tareas.push(tarea);
+    var inputLimpiar = document.getElementsByTagName("input");
+    inputLimpiar.value = "";
   }
   this.mostrar = function(element){
     var stringHtml = "";
@@ -39,6 +40,7 @@ function ListaCompleta () {
   this.noTerminado = function(){
     this.tareas.noTerminado();
   }
+
 }
 
 var listaTareas = new ListaCompleta();
@@ -54,6 +56,7 @@ listaTareas.agregar(new Tarea ("molestiae perspiciatis ipsa"));
 listaTareas.agregar(new Tarea ("illo est ratione doloremque quia maiores aut"));
 
 var listaElement = document.getElementById("listaTareas");
+
 listaTareas.mostrar(listaElement);
 
 var btnAgregar = document.getElementById("btnAgregar");
