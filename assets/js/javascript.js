@@ -29,9 +29,9 @@ function ListaCompleta () {
     for (var i in this.tareas){
       var task = this.tareas[i];
       if(task.completed){
-        stringHtml += "<li class=lineas style = background-color:#F2D7D5><input type=checkbox align=left><del>" + task.toHTML() + "</del></li>";;
+        stringHtml += "<li class=lineas style = background-color:#F2D7D5><input onclick = 'eliminar (this)' type=checkbox align=left id='" + i + "' ><del>" + task.toHTML() + "</del></li>";;
       } else {
-        stringHtml += "<li class=lineas><input type=checkbox align=left class=check>" + task.toHTML() + "</li>";
+        stringHtml += "<li class=lineas><input type=checkbox align=left class=check onclick = 'eliminar (this)' id='" + i + "'>" + task.toHTML() + "</li>"; 
       }
     }
     element.innerHTML = stringHtml;
@@ -67,4 +67,9 @@ btnAgregar.onclick = function (){
   listaTareas.agregar(new Tarea (nuevaTarea));
   listaTareas.mostrar(listaElement);
   document.getElementById("nuevaTarea").value = "";
+}
+
+function eliminar (e) {
+   listaTareas.tareas [ parseInt(e.id) ].completed = true;
+   listaTareas.mostrar(listaElement);
 }
