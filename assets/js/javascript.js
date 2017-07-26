@@ -18,7 +18,7 @@ function ListaCompleta () {
   this.tareas = [];
   this.agregar = function (tarea){
     if(tarea.title == ""){
-      alert("No ingresaste ninguna tarea");
+      alert("Ops!! No hacer nada está bien, pero no ingresaste ninguna tarea");
     } else {
       this.tareas.push(tarea);
     }
@@ -29,9 +29,9 @@ function ListaCompleta () {
     for (var i in this.tareas){
       var task = this.tareas[i];
       if(task.completed){
-        stringHtml += "<li class=lineas style = background-color:#F2D7D5><input onclick = 'eliminar (this)' type=checkbox align=left id='" + i + "' ><del>" + task.toHTML() + "</del></li>";;
+        stringHtml += "<li style = background-color:#F2D7D5><input onclick = 'eliminar (this)' ondblclick='recuperar (this)'type=checkbox align=left id='" + i + "' ><del>" + task.toHTML() + "</del></li>";
       } else {
-        stringHtml += "<li class=lineas><input type=checkbox align=left class=check onclick = 'eliminar (this)' id='" + i + "'>" + task.toHTML() + "</li>"; 
+        stringHtml += "<li ><input type=checkbox align=left onclick = 'eliminar (this)' oncontextmenu='editar(this)' id='" + i + "'>" + task.toHTML() + "</li>";
       }
     }
     element.innerHTML = stringHtml;
@@ -42,7 +42,6 @@ function ListaCompleta () {
   this.noTerminado = function(){
     this.tareas.noTerminado();
   }
-
 }
 
 var listaTareas = new ListaCompleta();
@@ -72,4 +71,18 @@ btnAgregar.onclick = function (){
 function eliminar (e) {
    listaTareas.tareas [ parseInt(e.id) ].completed = true;
    listaTareas.mostrar(listaElement);
+}
+
+function recuperar (e) {
+   listaTareas.tareas [ parseInt(e.id) ].completed = false;
+   listaTareas.mostrar(listaElement);
+}
+
+function editar (e) {
+  listaTareas.tareas[parseInt(e.id)].title = prompt("Edite la tarea");
+  if(listaTareas.tareas[parseInt(e.id)].title == ""){
+    alert("Ops! La edición está en blanco");
+    listaTareas.tareas[parseInt(e.id)].title = prompt("Edite la tarea");
+  }
+  listaTareas.mostrar(listaElement);
 }

@@ -15,6 +15,17 @@ h1 {
     color:white;
 }
 
+p {
+    font-size: 15px;
+    color: white;
+    width: 96%;
+    padding: 15px 2%;
+    margin: 0;
+    text-align: center;
+    border-top: 1px solid #D5DDE4;
+
+}
+
 div {
     background: #c25975;
     border-radius: 4px;
