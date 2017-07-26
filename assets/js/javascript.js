@@ -64,4 +64,5 @@ btnAgregar.onclick = function (){
   var nuevaTarea = document.getElementById("nuevaTarea").value;
   listaTareas.agregar(new Tarea (nuevaTarea));
   listaTareas.mostrar(listaElement);
+  document.getElementById("nuevaTarea").value = "";
 }
