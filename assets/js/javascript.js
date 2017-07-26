@@ -1,6 +1,6 @@
 function Tarea (title, completed ){
   this.title = title;
-  this.completed = false;
+  this.completed = completed;
   this.terminado = function(){
     this.completed = true;
   }
@@ -29,9 +29,9 @@ function ListaCompleta () {
     for (var i in this.tareas){
       var task = this.tareas[i];
       if(task.completed){
-        stringHtml += "<li style = background-color:yellow>" + task.toHTML() + "</li>";
+        stringHtml += "<li class=lineas style = background-color:#F2D7D5><input type=checkbox align=left><del>" + task.toHTML() + "</del></li>";;
       } else {
-        stringHtml += "<li>" + task.toHTML() + "</li>";
+        stringHtml += "<li class=lineas><input type=checkbox align=left class=check>" + task.toHTML() + "</li>";
       }
     }
     element.innerHTML = stringHtml;
@@ -46,16 +46,16 @@ function ListaCompleta () {
 }
 
 var listaTareas = new ListaCompleta();
-listaTareas.agregar(new Tarea ("delectus aut autem"));
-listaTareas.agregar(new Tarea ("quis ut nam facilis et officia qui"));
-listaTareas.agregar(new Tarea ("fugiat veniam minus"));
-listaTareas.agregar(new Tarea ("et porro tempora"));
-listaTareas.agregar(new Tarea ("laboriosam mollitia et enim quasi adipisci quia provident illum"));
-listaTareas.agregar(new Tarea ("qui ullam ratione quibusdam voluptatem quia omnis"));
-listaTareas.agregar(new Tarea ("illo expedita consequatur quia in"));
-listaTareas.agregar(new Tarea ("quo adipisci enim quam ut ab"));
-listaTareas.agregar(new Tarea ("molestiae perspiciatis ipsa"));
-listaTareas.agregar(new Tarea ("illo est ratione doloremque quia maiores aut"));
+listaTareas.agregar(new Tarea ("delectus aut autem", false));
+listaTareas.agregar(new Tarea ("quis ut nam facilis et officia qui",false));
+listaTareas.agregar(new Tarea ("fugiat veniam minus", false));
+listaTareas.agregar(new Tarea ("et porro tempora", true));
+listaTareas.agregar(new Tarea ("laboriosam mollitia et enim quasi adipisci quia provident illum", false));
+listaTareas.agregar(new Tarea ("qui ullam ratione quibusdam voluptatem quia omnis", false));
+listaTareas.agregar(new Tarea ("illo expedita consequatur quia in", false));
+listaTareas.agregar(new Tarea ("quo adipisci enim quam ut ab", true));
+listaTareas.agregar(new Tarea ("molestiae perspiciatis ipsa", false));
+listaTareas.agregar(new Tarea ("illo est ratione doloremque quia maiores aut",true));
 
 var listaElement = document.getElementById("listaTareas");
 
