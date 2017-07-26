@@ -17,9 +17,11 @@ function Tarea (title, completed ){
 function ListaCompleta () {
   this.tareas = [];
   this.agregar = function (tarea){
-    this.tareas.push(tarea);
-    var inputLimpiar = document.getElementsByTagName("input");
-    inputLimpiar.value = "";
+    if(tarea.title == ""){
+      alert("No ingresaste ninguna tarea");
+    } else {
+      this.tareas.push(tarea);
+    }
   }
   this.mostrar = function(element){
     var stringHtml = "";
